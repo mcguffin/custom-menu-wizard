@@ -57,7 +57,7 @@ class Custom_Menu_Wizard_Sorter extends Walker_Nav_Menu {
      * @param int   $max_depth The maximum hierarchical depth (default, unlimited).
      * @return array The elements in proper hierarchical order.
      */
-    public function walk( $elements, $max_depth = 0 ) {
+    public function walk( $elements, $max_depth, ...$args ) {
 
         //NB : any orphan elements (and that includes children of orphans) get appended to the
         //     output array in the order that they are placed in the original array (ie. regardless

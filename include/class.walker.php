@@ -52,7 +52,7 @@ class Custom_Menu_Wizard_Walker extends Walker_Nav_Menu {
      * @param integer $max_depth
      * @return string
      */
-    public function walk( $elements, $max_depth ){
+    public function walk( $elements, $max_depth, ...$args ){
 
         $args = array_slice( func_get_args(), 2 );
         $args = $args[0];
