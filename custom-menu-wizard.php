@@ -3,7 +3,7 @@
  * Plugin Name: Custom Menu Wizard
  * Plugin URI: http://wordpress.org/plugins/custom-menu-wizard/
  * Description: Show any part of a custom menu in a Widget, or in content using a Shortcode. Customise the output with extra classes or html; filter by current menu item or a specific item; set a depth, show the parent(s), change the list style, etc. Use the included emulator to assist with the filter settings.
- * Version: 3.3.1
+ * Version: 3.3.2
  * Author: Roger Barrett
  * Author URI: http://www.wizzud.com/
  * License: GPL2+
