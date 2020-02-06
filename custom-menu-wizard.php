@@ -372,7 +372,7 @@ if( !class_exists( 'Custom_Menu_Wizard_Plugin' ) ){
                 );
 
 ?>
- <p style="<?php echo $style; ?>"><em><?php echo $msg; ?></em></p>
+ <p style="<?php echo esc_attr($style); ?>"><em><?php echo wp_kses_post( $msg); ?></em></p>
 <?php
 
         } //end update_message()
@@ -417,12 +417,7 @@ if( !class_exists( 'Custom_Menu_Wizard_Plugin' ) ){
                 );
             foreach( $codes as $k => $v ){
                 $j = str_replace( '-', '_', $k );
-                //like_escape deprecated in v4...
-                if( method_exists( $wpdb, 'esc_like' ) ){
-                    $$j = '%' . $wpdb->esc_like( $v ) . '%';
-                }else{
-                    $$j = '%' . like_escape( esc_sql ( $v ) ) . '%';
-                }
+                $$j = '%' . $wpdb->esc_like( $v ) . '%';
             }
 
             //search in all custom fields...
