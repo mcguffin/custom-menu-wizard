@@ -177,7 +177,12 @@ class Custom_Menu_Wizard_Widget extends WP_Widget {
     <p>
         <label for="<?php echo esc_attr( $this->get_field_id('menu') ); ?>"><?php esc_html_e('Select Menu:', 'custom-menu-wizard'); ?></label>
         <select id="<?php echo esc_attr( $this->get_field_id('menu') ); ?>" class="cmw-select-menu cmw-listen"
-            name="<?php echo esc_attr( $this->get_field_name('menu') ); ?>"><?php echo esc_html( $menus['names'] ); ?></select>
+            name="<?php echo esc_attr( $this->get_field_name('menu') ); ?>">
+            <?php echo wp_kses($menus['names'], [
+            	'option'    => [ 'value' => [], 'selected' => [], 'data-cmw-level' => [], 'data-cmw-type' => [] ],
+            	'optgroup'    => [ 'label' => [], 'data-cmw-optgroup-index' => [], 'data-cmw-max-level' => [] ],
+            ]); ?>
+        </select>
     </p>
 <?php
         /**
@@ -367,7 +372,7 @@ endfor; ?></select></label>
             <label><?php esc_html_e('Level:', 'custom-menu-wizard'); ?>
 
                 <select id="<?php echo esc_attr($this->get_field_id('exclude_level') ); ?>" class="cmw-exclude-level"
-                    name="<?php echo esc_html( $this->get_field_name('exclude_level') ); ?>">
+                    name="<?php echo esc_attr( $this->get_field_name('exclude_level') ); ?>">
 <?php $j = intval($instance['exclude_level']) > $menus['selectedLevels'] ? '' : $instance['exclude_level']; ?>
                     <option value="" <?php selected( $j, '' ); ?>>&nbsp;</option><?php
 for( $i = 1; $i <= $menus['selectedLevels']; $i++ ) :
@@ -668,7 +673,7 @@ endfor; ?></optgroup>
 <?php if( is_numeric( $this->number ) && $this->number > 0 ) : ?>
         <div class="cmw-small-block"><em class="cmw-colour-grey"><?php echo wp_kses( __('This <u>specific widget</u> can also be included using...', 'custom-menu-wizard'), [ 'u' => [] ] ); ?></em></div>
         <div class="cmw-shortcode-wrap"><code class="widget-<?php echo sanitize_key($this->id_base); ?>-shortcode cmw-instance-shortcode ui-corner-all"
-            title="<?php esc_attr_e('dependent shortcode', 'custom-menu-wizard'); ?>">[cmwizard widget=<?php echo esc_html( $this->number ); ?>/]</code></div>
+            title="<?php esc_attr_e('dependent shortcode', 'custom-menu-wizard'); ?>">[cmwizard widget=<?php echo esc_attr( $this->number ); ?>/]</code></div>
 <?php endif; ?>
     </div>
 
@@ -1021,7 +1026,7 @@ endfor; ?></optgroup>
 
 <label for="<?php echo esc_attr($this->get_field_id( $field ) ); ?>"><?php echo esc_html( $params['label'] ); ?></label>
 <?php endif; ?>
-<input type="text" <?php $this->cmw_disableif(); ?> value="<?php echo esc_html( $instance[ $field ] ); ?>" <?php
+<input type="text" <?php $this->cmw_disableif(); ?> value="<?php echo esc_attr( $instance[ $field ] ); ?>" <?php
     ?>id="<?php echo esc_attr( $this->get_field_id( $field ) ); ?>" class="<?php echo esc_attr( $fieldClass ); ?>" <?php
     ?>name="<?php echo esc_attr( $this->get_field_name( $field ) ); ?>" />
 <?php if( !empty( $params['desc'] ) ) : ?>
@@ -1659,10 +1664,10 @@ endfor; ?></optgroup>
         <label for="<?php echo esc_attr( $this->get_field_id('menu') ); ?>"><?php esc_html_e('Select Menu:', 'custom-menu-wizard'); ?></label>
         <select id="<?php echo esc_attr( $this->get_field_id('menu') ); ?>" <?php $this->cmw_disableif(); ?>
                 class="cmw-select-menu cmw-listen" name="<?php echo esc_attr( $this->get_field_name('menu') ); ?>">
-            <?php echo wp_kses($menus['names'], [
-                'option'    => [ 'value' => [], 'selected' => [] ],
-                'optgroup'    => [ 'label' => [] ],
-            ]); ?>
+                <?php echo wp_kses($menus['names'], [
+                	'option'    => [ 'value' => [], 'selected' => [], 'data-cmw-level' => [], 'data-cmw-type' => [] ],
+                	'optgroup'    => [ 'label' => [], 'data-cmw-optgroup-index' => [], 'data-cmw-max-level' => [] ],
+                ]); ?>
         </select>
     </p>
 
