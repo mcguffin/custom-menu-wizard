@@ -216,10 +216,18 @@ endfor; ?></select>
             <select id="<?php echo esc_attr( $this->get_field_id('branch') ); ?>" class="cmw-branches cmw-assist-items cmw-listen"
                 <?php $this->cmw_disableif(); ?> name="<?php echo esc_attr( $this->get_field_name('branch') ); ?>">
                 <option value="0" <?php selected( $instance['branch'], 0 ); ?>><?php esc_html_e('Current Item', 'custom-menu-wizard'); ?></option>
-                <?php echo wp_kses($menus['selectedOptgroup'], [ 'option' => [ 'value' => [], 'selected' => ''], 'optgroup' => ['label'=>[]] ]); ?></select>
+                <?php 
+                    echo wp_kses($menus['selectedOptgroup'], [ 
+                        'option'    => [ 'value' => [], 'selected' => [], 'data-cmw-level' => [], 'data-cmw-type' => [] ],
+                    	'optgroup'    => [ 'label' => [], 'data-cmw-optgroup-index' => [], 'data-cmw-max-level' => [] ],
+                    ]); 
+                ?></select>
             <select id="<?php echo esc_attr( $this->get_field_id('branch_ignore') ); ?>" class='cmw-off-the-page'
                 name="<?php echo esc_attr( $this->get_field_name('branch_ignore') ); ?>" disabled="disabled">
-                <?php echo wp_kses( $menus['optgroups'], [  'option' => [ 'value' => [], 'selected' => ''], 'optgroup' => ['label'=>[]] ]); ?></select>
+                <?php echo wp_kses( $menus['optgroups'], [ 
+                    'option'    => [ 'value' => [], 'selected' => [], 'data-cmw-level' => [], 'data-cmw-type' => [] ],
+                	'optgroup'    => [ 'label' => [], 'data-cmw-optgroup-index' => [], 'data-cmw-max-level' => [] ],
+                ]); ?></select>
 
         </div>
 
@@ -1692,8 +1700,8 @@ endfor; ?></optgroup>
             <option value="-2" <?php selected( $instance['filter_item'], -2 ); ?>><?php esc_html_e('Current Root Item', 'custom-menu-wizard'); ?></option>
             <option value="-1" <?php selected( $instance['filter_item'], -1 ); ?>><?php esc_html_e('Current Parent Item', 'custom-menu-wizard'); ?></option>
             <?php echo wp_kses( $menus['selectedOptgroup'], [
-                'option'    => [ 'value' => [], 'selected' => [] ],
-                'optgroup'    => [ 'label' => [] ],
+                'option'    => [ 'value' => [], 'selected' => [], 'data-cmw-level' => [], 'data-cmw-type' => [] ],
+            	'optgroup'    => [ 'label' => [], 'data-cmw-optgroup-index' => [], 'data-cmw-max-level' => [] ],
             ]); ?>
         </select>
         <br /><label>
@@ -1708,8 +1716,8 @@ endfor; ?></optgroup>
         <select id="<?php echo esc_attr( $this->get_field_id('filter_item_ignore') ); ?>" disabled="disabled"
                 class='cmw-off-the-page' name="<?php echo esc_attr( $this->get_field_name('filter_item_ignore') ); ?>">
             <?php echo wp_kses( $menus['optgroups'], [
-                'option'    => [ 'value' => [], 'selected' => [] ],
-                'optgroup'    => [ 'label' => [] ],
+                'option'    => [ 'value' => [], 'selected' => [], 'data-cmw-level' => [], 'data-cmw-type' => [] ],
+            	'optgroup'    => [ 'label' => [], 'data-cmw-optgroup-index' => [], 'data-cmw-max-level' => [] ],
             ]); ?>
         </select>
     </p>
